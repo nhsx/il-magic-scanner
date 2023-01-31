@@ -539,7 +539,7 @@ If the purpose of the scanner is to inject data into the hospital PAS
 screen, it's useful to be able to demonstrate what that would look
 like.  [This directory](TODO) contains a very straightforward HTML
 mockup of the patient search screen of a hypothetical PAS, using the
-[NHS Frontent Toolkit](TODO) to make it look good.  It's served over
+[NHS Frontend Toolkit](TODO) to make it look good.  It's served over
 the local network when the scanner is running so if you want to demo
 it, you can.
 
