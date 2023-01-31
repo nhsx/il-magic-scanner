@@ -498,6 +498,7 @@ find the main scanner service code which:
 - extracts the interesting regions
 - passes them to an OCR application to convert them to text
 - pushes that text over USB to anything plugged in at the other end
+- serves up a diagnostic page over HTTP so you can see what it's doing
 - makes lights flash in visually stimulating and informative ways at
   various points along the way
 
@@ -505,6 +506,8 @@ There's also the accompanying systemd config to make the service start
 up at boot time, as with the other services in this project.
 
 ### Developer Conveniences
+
+#### Wifi
 
 It's very useful to be able to connect to the scanner over the network
 to diagnose what it's up to and to observe it working (or not).
@@ -529,6 +532,16 @@ I'll need to revisit this as and when we have more devices in the same
 location.  Having each one advertise its own AP isn't ideal in that
 situation; I can see that I might well want them to join a specific
 debugging AP run from a separate device.  But for now, it works.
+
+#### Test screens
+
+If the purpose of the scanner is to inject data into the hospital PAS
+screen, it's useful to be able to demonstrate what that would look
+like.  [This directory](TODO) contains a very straightforward HTML
+mockup of the patient search screen of a hypothetical PAS, using the
+[NHS Frontent Toolkit](TODO) to make it look good.  It's served over
+the local network when the scanner is running so if you want to demo
+it, you can.
 
 ## Author
 
