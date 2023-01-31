@@ -546,3 +546,22 @@ it, you can.
 ## Author
 
 Alex Young <alex.young12@nhs.net>
+
+
+[^1]: There is a horrible, no good, very bad problem here that I am
+    aware of but haven't yet corrected.  The name generator that I
+    used for this was very... white.  I might very well have trained
+    this system to be very good at identifying, for instance, "Jeff
+    Smith" but extremely unreliable at picking out a "Mohinder Singh"
+    or a "Jo Ng".  What I *hope* is that the model has learned that
+    what matters is *where* letters are, not *what* they are, but this
+    really, really needs testing - or better, just coming back and
+    redoing once I can identify a much better source of training data
+    than I had at the time.
+
+[^2]: I'm probably being unfair.  It's not unlikely that this can be
+    made to work if you know the right combination of settings, but I
+    spent an afternoon poking at it with no luck.  And even if I *had*
+    managed to get the scanner onto GovWifi, it still wouldn't be
+    accessible to a laptop sat next to it because the network is
+    designed (quite rightly) to segregate clients.
