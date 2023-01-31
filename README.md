@@ -206,7 +206,7 @@ flexible window frame didn't have enough vertical bracing so the angle
 of the window was dependent on the tightness of the bolts holding it
 on.  Not ideal.
 
-I also haven't really found the right way to design fillets on a
+I also hadn't really found the right way to design fillets on a
 project like this in FreeCAD, and that resulted in some areas where
 the curvature of the surface made for some rather ungainly topology.
 This is something that will get better in the next version of FreeCAD,
@@ -384,6 +384,39 @@ enough for our purposes and is extensible if a need surfaces.  It's
 standalone enough that I've spun it off as its own project; I'm sure
 it'll come in handy in other circumstances.
 
+## Mk2
+
+### The Hardware
+
+Having shown the mk1 to the team, there were several changes that
+needed making.
+
+The flex plate to trigger the button was deemed too much of a leap:
+while it's a neat mechanism, people can be hesitant to touch their
+phone screens to anything.  And if the screen is cracked, it could
+actually cause the image to be corrupted in a way that neither the
+phone's owner nor the person on the other side of the desk could see
+to know that anything was wrong.  So that went, replaced by a button
+on the outside of the case for the reception staff to press.
+
+The lack of a visual feedback mechanism was also a problem, so I
+planned to add a row of LEDs.  That's a fairly straightforward change:
+more below.
+
+There were a couple of other tweaks to make the case easier to 3d
+print.  I redid how the upper shell and the base to which the
+electronics are mounted mate together, for a start: the mk1 needed
+rather a lot of support material in the print, and that's a waste of
+material if it can be avoided.  The aren't any internal columns on
+this version, and there's a proper clearance hole for the USB cables.
+
+I also added a vanity plate with our unofficial team logo, because -
+well, why not.
+
+The Mk2 design is [here](TODO).  It's has a footprint a little larger
+than the mk1 to accomodate some additional electronics.
+
+
 ### Blinkenlights
 
 Mk1 of the scanner had no feedback mechanism, and that was a problem.
@@ -401,6 +434,12 @@ to figure out how to drive the PCA9685 directly.
 
 With that in place, I hooked a red, a yellow, and a green LED up to
 the PDA9695 board to give me some feedback channels.
+
+There was the option here to design a custom PCB to hold both the
+PCA9685 controller and the LEDs.  That might be suitable for a future
+iteration, but for now the LEDs are hand-soldered through-hole
+components on prototype board.  As and when we produce any more of
+these, I can revisit that.
 
 In terms of the software side, as with the keyboard support it made
 sense to bundle up the thing driving the LEDs up separately to the
