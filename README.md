@@ -199,7 +199,22 @@ was going to, it just fell outside the scope of a quick prototype
 whose purpose was to prove the data pathway.
 
 
-#### 3. Other flaws
+#### 3. The Raspberry Pi mounting
+
+Rather than figure out the dimensions of a raspberry pi zero, I
+figured that I could just reuse an existing case and clamp that into
+place, giving me a single thing to position correctly on the base of
+the scanner than having to worry about separately mounting the pi and
+its attached camera.
+
+This was a mixed blessing: the
+[case](https://www.raspberrypi.com/products/raspberry-pi-zero-case/)
+obviously fits the parts perfectly, but is a rather interesting shape,
+which made cutting an accurate slot for it in the model something of a
+challenge.  If I'd had a rather more rectilinear case to hand I would
+have used that instead and simplified the job.
+
+#### 4. Other flaws
 
 In my rush, I underestimated how much clearance a USB plug needs.
 There's not nearly enough clearance inside this body for a
