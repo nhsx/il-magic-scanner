@@ -150,11 +150,12 @@ the machine learning model?
 
 Unfortunately the licensing situation in this project doesn't let me
 share the original FreeCAD model itself, but I've put the `.step` file
-[here](cad/piscanner-mk1.step).  The reason is that the CAD model has
-a dependency on some third party `.step` files that I don't have a
-licence to distribute.  When I get a chance to come back and clean up
-the dependencies I will be able to share the FreeCAD document, but
-until then, this is the best I can do.
+[here](cad/piscanner-mk1.step) and the `.stl` (which github will
+render for you as a pretty picture) [here](cad/piscanner-mk1.stl).
+The reason is that the CAD model has a dependency on some third party
+`.step` files that I don't have a licence to distribute.  When I get a
+chance to come back and clean up the dependencies I will be able to
+share the FreeCAD document, but until then, this is the best I can do.
 
 There are a couple of things to note about the design of the mk1, both
 good and bad.
