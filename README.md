@@ -299,11 +299,14 @@ So, I did that, grabbed the resulting web page, and saved it.  I then
 edited the HTML to replace my name and NHS number with [python
 template
 markers](https://docs.python.org/3/library/string.html#template-strings).
-That enabled [this script](TODO) to generate an arbitrarily large
-number of fake NHS App home screens, each with their own name and
-number. [^1]
+That enabled [this
+script](training-data-generation/generate_sample_html.py) to generate
+an arbitrarily large number of fake NHS App home screens, each with
+their own name and number. [^1]
 
-Next, I used [this script](TODO) to take screenshots of each fake with
+Next, I used [this
+script](training-data-generation/generate_screenshots.py) to take
+screenshots of each fake with
 [selenium](https://selenium-python.readthedocs.io/).  It's not just
 the screenshot you need, though: to train the network to put the
 bounding box in the right place, you also need to capture where the
