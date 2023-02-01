@@ -1,0 +1,4 @@
+jumphost	ansible_user=ubuntu ansible_become=true
+
+[ml]
+gpuhost		ansible_user=ubuntu ansible_become=true

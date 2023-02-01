@@ -1,0 +1,28 @@
+---
+- name: I exist
+  user:
+    name: ubuntu
+    state: present
+    shell: /bin/bash
+- name: I am a nopasswd sudoer
+  community.general.sudoers:
+    name: dev-sudo
+    state: present
+    user: ubuntu
+    commands: ALL
+    nopassword: true
+- name: I can ssh in
+  authorized_key:
+    user: ubuntu
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+- name: basic packages
+  apt:
+    update_cache: true
+    pkg:
+      - git
+      - vim
+      - build-essential
+      - rsync
+      - sudo
+      - tmux

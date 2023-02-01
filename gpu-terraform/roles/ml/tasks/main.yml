@@ -1,0 +1,45 @@
+---
+- name: particularly useful packages
+  apt:
+    update_cache: true
+    pkg:
+      - imagemagick
+- name: go and get darknet
+  git:
+    repo: 'https://github.com/AlexeyAB/darknet.git'
+    dest: /opt/darknet
+    update: no
+- name: configure darknet
+  replace:
+    path: /opt/darknet/Makefile
+    regexp: '^({{item}})=0$'
+    replace: '\1=1'
+  with_items:
+    - "GPU"
+    - "CUDNN"
+    - "OPENCV"
+- name: chown so the build process can find the right binaries
+  file:
+    path: /opt/darknet
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+    recurse: true
+- name: make sure ld can see -lcudnn
+  lineinfile:
+    create: true
+    owner: root
+    group: root
+    line: "/usr/local/cuda/lib"
+    path: /etc/ld.so.conf.d/cudnn.conf
+    state: present
+- name: ldconfig
+  command:
+    cmd: ldconfig
+- name: build darknet
+  command:
+    chdir: /opt/darknet
+    creates: /opt/darknet/darknet
+    cmd: bash -ilc 'make'
+  become: yes
+  become_user: ubuntu

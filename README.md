@@ -256,8 +256,10 @@ platform that the scanner would execute when the button was pressed.
 
 There is a terraform script for provisioning an AWS GPU instance (I've
 picked `g3s.xlarge` as the cheapest spot instance size available) in
-[here](TODO). It takes care of grabbing the `darknet` source and
-building it.
+[here](gpu-terraform/README.md). It takes care of grabbing the
+`darknet` source and building it.  Note that it *also* provisions a
+smallish jump host as a non-GPU instance so that you can have a stable
+jumping-off point that's not so expensive to run.
 
 
 #### Model Selection
