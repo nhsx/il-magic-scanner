@@ -148,12 +148,19 @@ the machine learning model?
 
 ### Physical Shell: the Mk1
 
-The FreeCAD design for the Mk1 physical shell is [here](TODO).  As you
-can imagine for a quick project like this, the project layout isn't
-necessarily the cleanest, but there are a couple of features it's
-worth pulling out.
+Unfortunately the licensing situation in this project doesn't let me
+share the CAD model itself, but you can see a render of it
+[here](TODO).  The reason is that the CAD model has a dependency on
+some third party .step files that I don't have a licence to
+distribute.  When I get a chance to come back and clean up the
+dependencies I will be able to share the FreeCAD document, but until
+then, this is the best I can do.
 
-##### 1. The Trigger Mechanism
+There are a couple of things to note about the design of the mk1, both
+good and bad.
+
+
+#### 1. The Trigger Mechanism
 
 I needed a button press to trigger taking the photo and processing it.
 In my first version I thought it best to hide the button and see if I
@@ -183,7 +190,7 @@ the shell isn't great for this sort of design.  I wanted to be able to
 swap out the towers to tweak their heights so the offset from the
 flexible frame was better, but couldn't.
 
-##### 2. The Absence Of Any Feedback Whatsoever
+#### 2. The Absence Of Any Feedback Whatsoever
 
 In the time available I just didn't have the opportunity to put any
 status lights or readouts on the outside of the device.  I knew how I
@@ -191,7 +198,7 @@ was going to, it just fell outside the scope of a quick prototype
 whose purpose was to prove the data pathway.
 
 
-##### 3. Other flaws
+#### 3. Other flaws
 
 In my rush, I underestimated how much clearance a USB plug needs.
 There's not nearly enough clearance inside this body for a
@@ -413,8 +420,9 @@ this version, and there's a proper clearance hole for the USB cables.
 I also added a vanity plate with our unofficial team logo, because -
 well, why not.
 
-The Mk2 design is [here](TODO).  It's has a footprint a little larger
-than the mk1 to accomodate some additional electronics.
+As with the Mk1, I can't share the CAD model just yet, but
+[this](TODO) is what it looks like.  It has a footprint a little
+larger than the mk1 to accomodate some additional electronics.
 
 
 ### Blinkenlights
