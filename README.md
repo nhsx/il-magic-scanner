@@ -229,12 +229,10 @@ flexible window frame didn't have enough vertical bracing so the angle
 of the window was dependent on the tightness of the bolts holding it
 on.  Not ideal.
 
-I also hadn't really found the right way to design fillets on a
-project like this in FreeCAD, and that resulted in some areas where
-the curvature of the surface made for some rather ungainly topology.
-This is something that will get better in the next version of FreeCAD,
-but I shouldn't lean on blaming the tool.
-
+Purely by chance, at no point in the lifespan of the mk1 did I need
+access to the SD card.  Lacking any way of getting at it which
+wouldn't involve a complete disassembly was a conscious choice, but
+one I would rectify later.
 
 ### Machine Learning
 
