@@ -434,7 +434,7 @@ this version, and there's a proper clearance hole for the USB cables.
 I also added a vanity plate with our unofficial team logo, because -
 well, why not.
 
-As with the Mk1, I can't share the CAD model just yet, but
+As with the Mk1, I can't share the FreeCAD file just yet, but
 [this](cad/piscanner-mk2.stl) is what it looks like (`.step`
 [here](cad/piscanner-mk2.step)).  It has a footprint a little larger
 than the mk1 to accomodate some additional electronics.
