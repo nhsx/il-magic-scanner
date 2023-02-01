@@ -149,12 +149,12 @@ the machine learning model?
 ### Physical Shell: the Mk1
 
 Unfortunately the licensing situation in this project doesn't let me
-share the CAD model itself, but you can see a render of it
-[here](TODO).  The reason is that the CAD model has a dependency on
-some third party .step files that I don't have a licence to
-distribute.  When I get a chance to come back and clean up the
-dependencies I will be able to share the FreeCAD document, but until
-then, this is the best I can do.
+share the original FreeCAD model itself, but I've put the `.step` file
+[here](cad/piscanner-mk1.step).  The reason is that the CAD model has
+a dependency on some third party `.step` files that I don't have a
+licence to distribute.  When I get a chance to come back and clean up
+the dependencies I will be able to share the FreeCAD document, but
+until then, this is the best I can do.
 
 There are a couple of things to note about the design of the mk1, both
 good and bad.
@@ -421,8 +421,9 @@ I also added a vanity plate with our unofficial team logo, because -
 well, why not.
 
 As with the Mk1, I can't share the CAD model just yet, but
-[this](TODO) is what it looks like.  It has a footprint a little
-larger than the mk1 to accomodate some additional electronics.
+[this](cad/piscanner-mk2.step) is what it looks like.  It has a
+footprint a little larger than the mk1 to accomodate some additional
+electronics.
 
 
 ### Blinkenlights
