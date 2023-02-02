@@ -400,7 +400,7 @@ and converts it into the corresponding keypresses.  Fortunately for
 our purposes, the conversion is easy in that we only need to be able
 to send things that are typeable: a name, a number, and some spaces.
 
-In [this repository](TODO) is a service that runs on the raspberry pi
+In [this repository](https://github.com/nhsx/il-keebd) is a service that runs on the raspberry pi
 whose job it is to take data (from something else running on the
 machine), strip out anything it can't pass on, and convert the
 remainder into keypresses.  It's not very general, in the sense that
