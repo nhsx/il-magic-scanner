@@ -321,8 +321,10 @@ need our scanner to be robust to the sorts of noise and distortion
 that taking a photo of a phone screen under only semi-controlled
 conditions will be subject to.  For this, I leaned on the
 [albumentations](https://albumentations.ai/docs/#getting-started-with-albumentations)
-tool.  [This script](TODO) is what drives it, and you can see the list
-of different types of distortion it applies for me:
+tool.  [This
+script](training-data-generation/generate_augmentations.py) is what
+drives it, and you can see the list of different types of distortion
+it applies for me:
 
 ```
 [
@@ -367,8 +369,8 @@ ANYWAY.
 
 The YOLOv7 architecture learned from this dataset *fast*.  Fast is
 relative, but I had a usable network for testing with in half an hour
-or so, and in an hour or so `darknet` reported it was done. Nowhere
-near the overnight runs that I was expecting.
+or so, and in slightly more than an hour `darknet` reported it was
+done. Nowhere near the overnight runs that I was expecting.
 
 From this I can intuit that the YOLOv7 architecture is *dramatically*
 overpowered for this use case.  The question is whether this matters.
@@ -390,9 +392,6 @@ whether the USB host at the other end of the USB cable is detected as
 a hard drive, a modem, or a keyboard is a matter of software
 configuration.
 
-In [this directory](TODO) you will find a tool to configure the
-raspberry pi such that it pretends to be a keyboard.
-
 Now, that's only half of the story.  When you think of sending data
 and pretending to be a keyboard, it's clear that you can't just send
 arbitrary data.  You can't send a `NULL`, for instance: there's no key
@@ -401,7 +400,7 @@ and converts it into the corresponding keypresses.  Fortunately for
 our purposes, the conversion is easy in that we only need to be able
 to send things that are typeable: a name, a number, and some spaces.
 
-In [this directory](TODO) is a service that runs on the raspberry pi
+In [this repository](TODO) is a service that runs on the raspberry pi
 whose job it is to take data (from something else running on the
 machine), strip out anything it can't pass on, and convert the
 remainder into keypresses.  It's not very general, in the sense that
