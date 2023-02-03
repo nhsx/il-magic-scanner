@@ -269,12 +269,13 @@ want to mess about trying to find a network architecture that would
 work, I needed to pick something off the shelf that I could reuse
 without too much hassle and would have enough power, and the right
 inputs and outputs, for the task.  The YOLO family of network
-architectures fit the bill, and specifically the YOLOv7 looked like it
-would have the performance characteristics we need.  It's also popular
-enough that there is a lot of guidance available online for using
-it. There's a premade `darknet` config for it, so it looked like it
-would be reasonable to start there and only change that decision if it
-turned out either to be too slow, or not accurate enough.
+architectures fit the bill, and specifically the YOLOv4-tiny variant
+looked like it would have the performance characteristics we need.
+It's also popular enough that there is a lot of guidance available
+online for using it. There's a premade `darknet` config for it, so it
+looked like it would be reasonable to start there and only change that
+decision if it turned out either to be too slow, or not accurate
+enough.
 
 
 #### Training Data
@@ -367,12 +368,12 @@ over residential broadband.
 
 ANYWAY.
 
-The YOLOv7 architecture learned from this dataset *fast*.  Fast is
+The YOLOv4 architecture learned from this dataset *fast*.  Fast is
 relative, but I had a usable network for testing with in half an hour
 or so, and in slightly more than an hour `darknet` reported it was
 done. Nowhere near the overnight runs that I was expecting.
 
-From this I can intuit that the YOLOv7 architecture is *dramatically*
+From this I can intuit that the YOLOv4 architecture is *dramatically*
 overpowered for this use case.  The question is whether this matters.
 More on this shortly.
 
@@ -509,7 +510,7 @@ loading networks that darknet has trained.  Running the same network
 and image through that library got the inference time down to 10
 seconds.  Good, but still not quite good enough for practical use.
 
-The network I initially trained was based on a YOLOv7 example, and had
+The network I initially trained was based on a YOLOv4 example, and had
 an input network size of 416x416 pixels.  I thought that by reducing
 the image size I might get some more speed, so I spun up another GPU
 instance in AWS and trained a network with an input resolution of
