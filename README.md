@@ -400,14 +400,15 @@ and converts it into the corresponding keypresses.  Fortunately for
 our purposes, the conversion is easy in that we only need to be able
 to send things that are typeable: a name, a number, and some spaces.
 
-In [this repository](https://github.com/nhsx/il-keebd) is a service that runs on the raspberry pi
-whose job it is to take data (from something else running on the
-machine), strip out anything it can't pass on, and convert the
-remainder into keypresses.  It's not very general, in the sense that
-there's a lot that in theory is typable which it ignores, but it does
-enough for our purposes and is extensible if a need surfaces.  It's
-standalone enough that I've spun it off as its own project; I'm sure
-it'll come in handy in other circumstances.
+In [this repository](https://github.com/nhsx/il-keebd) is a service
+that runs on the raspberry pi whose job it is to take data (from
+something else running on the machine), strip out anything it can't
+pass on, and convert the remainder into keypresses.  It's not very
+general, in the sense that there's a lot that in theory is typable
+which it ignores, but it does enough for our purposes and is
+extensible if a need surfaces.  It's standalone enough that I've spun
+it off as its own project; I'm sure it'll come in handy in other
+circumstances.
 
 ## Mk2
 
@@ -448,16 +449,19 @@ than the mk1 to accomodate some additional electronics.
 
 Mk1 of the scanner had no feedback mechanism, and that was a problem.
 Fortunately adding status LEDs is a fairly straightforward
-proposition: there is a very cheap board [you can get](TODO) which is
-designed for lighting LEDs in interesting patterns, which you can plug
-it into the I2C pins of a raspberry pi's GPIO interface and talk to it
-over a simple API.
+proposition: there is a very cheap board [you can
+get](https://www.amazon.co.uk/Interface-Controller-Compatible-Ardu-ino-Raspberry/dp/B08ZKSYZJ4)
+which is designed for lighting LEDs in interesting patterns, which you
+can plug it into the I2C pins of a raspberry pi's GPIO interface and
+talk to it over a simple API.
 
 I couldn't find any direct support for the PCA9685 board aimed at the
-raspberry pi, but it is very well supported in the [micropython](TODO)
-[ecosystem](TODO).  I [shamelessly](TODO) [nicked](TODO) the support
-code and wrote a [very thin shim](TODO) to reuse it so I didn't have
-to figure out how to drive the PCA9685 directly.
+raspberry pi, but it is very well supported in the
+[micropython](https://micropython.org/)
+[ecosystem](https://github.com/adafruit/micropython-adafruit-pca9685/blob/master/pca9685.py).
+I [shamelessly](TODO) [nicked](TODO) the support code and wrote a
+[very thin shim](TODO) to reuse it so I didn't have to figure out how
+to drive the PCA9685 directly.
 
 With that in place, I hooked a red, a yellow, and a green LED up to
 the PDA9695 board to give me some feedback channels.

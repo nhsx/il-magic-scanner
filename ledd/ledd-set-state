@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+
+import socket
+import sys
+import toml
+
+socket_path = toml.load("/etc/ledd.conf")['socket_path']
+
+state_to_send = sys.argv[1]
+
+sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+sock.connect(socket_path)
+sock.sendall((state_to_send+"\n").encode())
+sock.close()

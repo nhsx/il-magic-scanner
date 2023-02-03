@@ -1,0 +1,12 @@
+[Unit]
+Description=LED pattern service
+After=keebd.service
+
+[Service]
+User=root
+WorkingDirectory=/opt/ledd
+ExecStart=/opt/ledd/serve
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
