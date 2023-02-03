@@ -456,12 +456,16 @@ can plug it into the I2C pins of a raspberry pi's GPIO interface and
 talk to it over a simple API.
 
 I couldn't find any direct support for the PCA9685 board aimed at the
-raspberry pi, but it is very well supported in the
+raspberry pi, but there's support in the
 [micropython](https://micropython.org/)
-[ecosystem](https://github.com/adafruit/micropython-adafruit-pca9685/blob/master/pca9685.py).
-I [shamelessly](TODO) [nicked](TODO) the support code and wrote a
-[very thin shim](TODO) to reuse it so I didn't have to figure out how
-to drive the PCA9685 directly.
+[ecosystem](https://github.com/adafruit/micropython-adafruit-pca9685).
+I
+[shamelessly](https://github.com/adafruit/micropython-adafruit-pca9685/blob/master/pca9685.py#L5)
+[nicked](https://github.com/nhsx/il-magic-scanner/blob/main/ledd/ledd/pca9685.py#L22)
+the support code and wrote a [very thin
+shim](https://github.com/nhsx/il-magic-scanner/blob/main/ledd/ledd/pca9685.py#L11)
+to reuse it so I didn't have to figure out how to drive the PCA9685
+directly.
 
 With that in place, I hooked a red, a yellow, and a green LED up to
 the PDA9695 board to give me some feedback channels.
@@ -476,7 +480,7 @@ In terms of the software side, as with the keyboard support it made
 sense to bundle up the thing driving the LEDs up separately to the
 software doing the actual scanning, but for a slightly different
 reason: if the scanner bit fails, I still want control over the LEDs
-so I can blink my little red blinky light.  The code is [here](TODO);
+so I can blink my little red blinky light.  The code is [here](ledd);
 I've not split it out to a separate project for the simple reason that
 the bits of config that tell it what various patterns of lights mean
 are super-specific to the business of being a scanner, and I haven't
