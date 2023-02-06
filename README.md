@@ -525,7 +525,7 @@ result I could have hoped for, and pushed the performance of the
 scanner into the range of suitability for practical use.
 
 The final piece of the puzzle, then, is a script to coordinate all the
-parts I've built.  It's in [this directory](TODO).  In there you'll
+parts I've built.  It's in [this directory](piscanner/).  In there you'll
 find the main scanner service code which:
 
 - waits for the button press
@@ -540,6 +540,14 @@ find the main scanner service code which:
 
 There's also the accompanying systemd config to make the service start
 up at boot time, as with the other services in this project.
+
+Note that what you *won't* find in there are the model weights, the
+data file that defines the neural network.  That's because it's 22MB
+of stuff that doesn't want to be versioned as a lump in this
+repository.  You'll find it over in the `Releases` instead.  See
+`[piscanner/README.md](piscanner/README.md)` for instructions on how
+to set up the weights file, and all other things related to actually
+running the `piscanner` code.
 
 ### Developer Conveniences
 
