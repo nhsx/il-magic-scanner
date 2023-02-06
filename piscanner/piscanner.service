@@ -1,0 +1,12 @@
+[Unit]
+Description=NHS App scanner daemon
+After=keebd.service
+
+[Service]
+User=root
+WorkingDirectory=/opt/piscanner
+ExecStart=/opt/piscanner/serve
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

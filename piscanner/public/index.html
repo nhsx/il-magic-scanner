@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <script>
+
+    const wsurl = ((window.location.protocol === "https:") ? "wss://" : "ws://") + 
+		    window.location.host + 
+		    "/ws";
+    const socket = new WebSocket(wsurl);
+    socket.onmessage = (event) => {
+        const update = JSON.parse(event.data);
+        const ids_to_update = ['image','name-image','number-image'];
+        for(const id of ids_to_update) {
+            const img = document.getElementById(id);
+            const path = img.src.split("?")[0]
+            const timestamp = new Date().getTime();
+            img.src = path + "?" + timestamp;
+        }
+        document.getElementById("name-str").innerHTML = update['name'];
+        document.getElementById("number-str").innerHTML = update['number'];
+    };
+
+    </script>
+  </head>
+  <body>
+    <a href="pas/index.html">Fake PAS is here</a><br />
+    <img id="image" src="/images/image.jpg">
+    <br />
+    <img id="name-image" src="/images/name.jpg"> <span id="name-str"></span>
+    <br />
+    <img id="number-image" src="/images/number.jpg"> <span id="number-str"></span>
+  </body>
+</html>
