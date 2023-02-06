@@ -566,11 +566,11 @@ connect to, with no further connectivity onwards to the internet but
 enough of a network to allow you as a developer to connect to the
 scanner and to do what you need to do.
 
-[This directory](TODO) contains the scripts which will configure any
-old raspberry pi to do this.  You can switch between access point and
-ordinary network client mode (with a reboot, but that's fine for now)
-and as long as you do that switch before you leave somewhere with
-friendly wifi, all is well.
+[This directory](wifi-access-point) contains the scripts which will
+configure any old raspberry pi to do this.  You can switch between
+access point and ordinary network client mode (with a reboot, but
+that's fine for now) and as long as you do that switch before you
+leave somewhere with friendly wifi, all is well.
 
 I'll need to revisit this as and when we have more devices in the same
 location.  Having each one advertise its own AP isn't ideal in that
