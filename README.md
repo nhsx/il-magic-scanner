@@ -303,7 +303,7 @@ markers](https://docs.python.org/3/library/string.html#template-strings).
 That enabled [this
 script](training-data-generation/generate_sample_html.py) to generate
 an arbitrarily large number of fake NHS App home screens, each with
-their own name and number. [^1]
+their own name and number.
 
 Next, I used [this
 script](training-data-generation/generate_screenshots.py) to take
@@ -577,7 +577,6 @@ location.  Having each one advertise its own AP isn't ideal in that
 situation; I can see that I might well want them to join a specific
 debugging AP run from a separate device.  But for now, it works.
 
-
 #### Test screens
 
 If the purpose of the scanner is to inject data into the hospital PAS
@@ -593,7 +592,56 @@ Rather than add a new service to a growing system, I decided to serve
 this from the same process that's doing the scanning.  It's all
 handled by python's asyncio framework.
 
+#### Development tools
+
+The Raspberry Pi Zero 2 is a perfectly competent little computer, and
+doing the code development on the scanner itself over an SSH
+connection was a painless experience.  [This
+directory](pi-ansible-config/roles/dev) contains installation scripts
+for the small number of tools I used to do so.  My intention was that,
+when combined with a backup/sync script on my laptop, I would be able
+to shift development onto another Pi without any effort and largely
+that remains true.
+
 ## Conclusions: what did we learn?
+
+### The Trees
+
+There are two main issues that want folding into the next iteration.
+First, the bounding box training was a little bad: when
+`albumentations` does its job of adding noise to the image, one of the
+things it can do is to translate it so the name isn't completely on
+the screen.  That's also something that can happen In Real Life just
+by someone mis-aligning their phone.
+
+The behaviour of `albumentations` when this happens is to clip the
+bounding box at `x=0`, no matter how far in the negative direction the
+edge of the bounding box should be.  This means that the neural
+network learned that it was OK to clip the bounding box straight
+through the middle of a letter, under certain circumstances, which is
+something that the OCR isn't good at handling.
+
+The fix for this is straightforward: we want to simply reject scans
+where the information we want isn't on the screen.  Removing the
+bounding boxes for any that have been clipped offscreen from the
+training data, and retraining, would do the trick here.  It's better
+to force a rescan than proceed with partial data if we can detect it.
+
+The second issue is that there is a horrible, no good, very bad
+problem with the training data that I am aware of but haven't yet
+corrected.  The name generator that I used for this was very... white.
+I might very well have trained this system to be very good at
+identifying, for instance, "Jeff Smith" but extremely unreliable at
+picking out a "Mohinder Singh" or a "Jo Ng".  What I *hope* is that
+the model has learned that what matters is *where* letters are, not
+*what* they are, but this really, really needs testing - or better,
+just coming back and redoing once I can identify a much better source
+of training data than I had at the time.  Alternatively I could drop
+the idea of "names" altogether and train on random character
+sequences.
+
+
+### The Wood
 
 In terms of the primary goal of the project - can we build a scanner
 that will let us test the ergonomics of our proposed feature without
@@ -618,18 +666,6 @@ the future.
 ## Author
 
 Alex Young <alex.young12@nhs.net>
-
-
-[^1]: There is a horrible, no good, very bad problem here that I am
-    aware of but haven't yet corrected.  The name generator that I
-    used for this was very... white.  I might very well have trained
-    this system to be very good at identifying, for instance, "Jeff
-    Smith" but extremely unreliable at picking out a "Mohinder Singh"
-    or a "Jo Ng".  What I *hope* is that the model has learned that
-    what matters is *where* letters are, not *what* they are, but this
-    really, really needs testing - or better, just coming back and
-    redoing once I can identify a much better source of training data
-    than I had at the time.
 
 [^2]: I'm probably being unfair.  It's not unlikely that this can be
     made to work if you know the right combination of settings, but I
