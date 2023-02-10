@@ -566,10 +566,10 @@ connect to, with no further connectivity onwards to the internet but
 enough of a network to allow you as a developer to connect to the
 scanner and to do what you need to do.
 
-[This directory](wifi-access-point) contains the scripts which will
-configure any old raspberry pi to do this.  You can switch between
-access point and ordinary network client mode (with a reboot, but
-that's fine for now) and as long as you do that switch before you
+[This directory](pi-ansible-config/roles/hostap) contains the scripts
+which will configure any old raspberry pi to do this.  You can switch
+between access point and ordinary network client mode (with a reboot,
+but that's fine for now) and as long as you do that switch before you
 leave somewhere with friendly wifi, all is well.
 
 I'll need to revisit this as and when we have more devices in the same
@@ -577,15 +577,43 @@ location.  Having each one advertise its own AP isn't ideal in that
 situation; I can see that I might well want them to join a specific
 debugging AP run from a separate device.  But for now, it works.
 
+
 #### Test screens
 
 If the purpose of the scanner is to inject data into the hospital PAS
 screen, it's useful to be able to demonstrate what that would look
-like.  [This directory](TODO) contains a very straightforward HTML
-mockup of the patient search screen of a hypothetical PAS, using the
-[NHS Frontend Toolkit](TODO) to make it look good.  It's served over
-the local network when the scanner is running so if you want to demo
-it, you can.
+like.  [This directory](piscanner/public/pas) contains a very
+straightforward HTML mockup of the patient search screen of a
+hypothetical PAS, using the [NHS Frontend
+Toolkit](https://nhsuk.github.io/nhsuk-frontend/) to make it look
+good.  It's served over the local network when the scanner is running
+so if you want to demo it, you can.
+
+Rather than add a new service to a growing system, I decided to serve
+this from the same process that's doing the scanning.  It's all
+handled by python's asyncio framework.
+
+## Conclusions: what did we learn?
+
+In terms of the primary goal of the project - can we build a scanner
+that will let us test the ergonomics of our proposed feature without
+having to get that feature into the NHS app - we can say that yes, we
+can.  At this point the scanner has not had the larger-scale in-situ
+testing that would let me assess whether the scanning is reliable
+enough in practical use.  While we do need to do that, and going
+through that process will doubtless lead to changes needed both to the
+physical design and the software it runs, getting to this point alone
+within a two week sprint (actually slightly less - 10 calendar days
+from breaking ground on the mk1 to demoing the mk2 as a working
+artefact), we can say that as a design and build process it has been a
+success as far as it went.
+
+Taking a step back from this project itself, demonstrating that the
+range of capabilities, equipment, skills, and tooling required to
+build a device like this is well within the grasp of a very small team
+on tight timescales is in its own right a valuable outcome, and puts
+a useful frame around the sorts of projects that we can consider for
+the future.
 
 ## Author
 
