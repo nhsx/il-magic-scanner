@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+/sbin/iw dev wlan0 set power_save off
+
+exit 0

@@ -1,0 +1,42 @@
+---
+- name: I am a nopasswd sudoer
+  community.general.sudoers:
+    name: dev-sudo
+    state: present
+    user: pi
+    commands: ALL
+    nopassword: true
+- name: basic packages
+  apt:
+    update_cache: true
+    pkg:
+      - git
+      - vim
+      - build-essential
+      - rsync
+      - sudo
+      - tmux
+- name: switch off wifi power save, because extremely annoying
+  copy:
+    src: rc.local
+    dest: /etc/rc.local
+    owner: root
+    group: root
+    mode: '0755'
+- name: camera/video packages
+  apt:
+    pkg:
+      - ffmpeg
+      - python3-picamera2
+      - python3-gpiozero
+      - python3-tesserocr
+      - imagemagick
+      - python3-aiohttp
+      - python3-websockets
+      - python3-opencv
+      - python3-smbus
+      - i2c-tools
+# We need to raspi-config the i2c interface on
+- name: enable i2c for blinkenlights
+  shell: "raspi-config nonint do_i2c 0"
+  

@@ -1,0 +1,1 @@
+piscanner.local ansible_user=pi ansible_become=true ansible_connection=paramiko

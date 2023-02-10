@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+systemctl disable hostapd
+systemctl disable dnsmasq
+ln -sf /etc/dhcpcd.conf.nothotspot /etc/dhcpcd.conf
+echo "Now reboot"

@@ -1,0 +1,59 @@
+---
+- name: hostapd packages
+  apt:
+    state: present
+    pkg:
+      - hostapd
+      - dnsmasq
+
+- name: stop services before configuring them
+  systemd:
+    name: "{{item}}"
+    state: stopped
+  with_items:
+    - hostapd
+    - dnsmasq
+
+- name: configure hostapd
+  template:
+    src: files/hostapd.conf.j2
+    dest: /etc/hostapd/hostapd.conf
+
+- name: allow hostapd to run
+  systemd:
+    name: hostapd
+    masked: no
+
+- name: configure dnsmasq
+  copy:
+    src: dnsmasq.conf
+    dest: /etc/dnsmasq.conf
+
+- name: configure dhcpcd for non-hotspot
+  copy:
+    src: dhcpcd.conf.nothotspot
+    dest: /etc/dhcpcd.conf.nothotspot
+    group: netdev
+    owner: root
+
+- name: configure dhcpcd for hotspot
+  copy:
+    src: dhcpcd.conf.hotspot
+    dest: /etc/dhcpcd.conf.hotspot
+    group: netdev
+    owner: root
+
+
+- name: drop become-hotspot switch file in /usr/local/sbin
+  copy:
+    src: become-hotspot
+    dest: /usr/local/sbin/become-hotspot
+    mode: '0700'
+    owner: root
+
+- name: drop stop-hotspot switch file in /usr/local/sbin
+  copy:
+    src: stop-hotspot
+    dest: /usr/local/sbin/stop-hotspot
+    mode: '0700'
+    owner: root

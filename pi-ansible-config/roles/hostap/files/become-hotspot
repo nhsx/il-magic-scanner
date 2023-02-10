@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+ln -sf /etc/dhcpcd.conf.hotspot /etc/dhcpcd.conf
+systemctl enable hostapd
+systemctl enable dnsmasq
+echo "Now reboot"
