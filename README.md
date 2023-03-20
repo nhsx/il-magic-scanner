@@ -50,62 +50,33 @@ the NHS Number; and third we can get it right first time.
 
 ### The Patient ID QR Code
 
-Our intent is that the NHS App should present a QR code containing the
-relevant information, on the home screen.  QR codes are easy to
-generate and easy to scan.  The way an off-the-shelf £25 barcode
-reader from Amazon works is that it pretends to be a USB keyboard:
-when you scan a QR code, what the computer it's plugged into sees is
-as though someone was sat there typing in the data encoded in the QR
-code.  That makes them extremely easy to physically integrate.  And
-when you sign in to the NHS App with an NHS Login that is sufficiently
-assured, it has all the information we want to present, so all the
-technical parts are straightforward.  However, there is a roadblock in
-our way.
+We want the NHS App to present a QR code containing the relevant
+information, on the home screen.  QR scanners pretend to be a USB
+keyboard: when you scan a QR code, to the computer it's as though
+someone was sat there typing in the data encoded in the QR code.
+And when you sign in to the NHS App with an NHS Login that is
+sufficiently assured, it has all the information we want to
+present. All the technical parts are straightforward.
 
-If we want to make a change in the NHS App, that effectively means
-rolling it out nationally.  Before any hospitals are signed up.  We
-don't have the cohorting ability to only roll out the QR code to
-people who are going to turn up at a specific A&E: in general people
-don't schedule falling off their ladders for us, convenient though
-that would be.  That means we'd be introducing a potentially confusing
-feature into the system before anyone could either explain what it was
-or, equally importantly, prevent complaints at hospital front desks
-that they couldn't read this fancy new QR code thing that had just
-appeared in their app.
+However, if we want to make a change in the NHS App, that
+effectively means rolling it out nationally.  We don't have the
+cohorting ability to only roll out the QR code to people who are
+going to turn up at a specific A&E: in general people don't
+schedule falling off their ladders for us, convenient though that
+would be.  That means we'd be introducing a potentially confusing
+feature into the system before anyone could either explain what
+it was.
 
-So: we need to prove that the idea has legs so we know that the idea
-is worth making the investment in to push it out as a major new
-feature across the system.  And this is where it gets a bit fiddly.
-
-The experiment we want to do is to have people turn up at the A&E
-desk, sign in on their phone with no other prep, scan in, and give the
-hospital a high degree of confidence that they've got the right data.
-With that, we can measure the time-at-desk both with and without the
-scanning, and demonstrate how much time we can save the system.
-
-However, without being able to get a QR code into the NHS App itself
-as a trial, the next most obvious option is that we stand up a
+Without being able to get a QR code into the NHS App itself as a
+trial, the next most obvious option is that we stand up a
 parallel service to generate the QR code.  This service would be
-fronted by NHS Login, so people could use exactly the same credentials
-as they use for the NHS App, and it as only purpose would be to put a
-scannable code on the phone's screen.  This would be technically
-simple to build and operate.
-
-You can guess that this route is not all plain sailing, though.  It
-turns out that roughly half of all NHS App users log in with the
-biometrics - fingerprint, faceID, whatever - on their phone.  That
-biometric login wouldn't be available to our QR code service, so
-anyone logging in for their QR code would need to go through a
-password-based NHS Login flow.  Now, I don't know about you, but if
-I've not logged into a service with its password since setting it up
-years ago, I'm very unlikely to remember the password; this is doubly
-true if I'm stressed because something's happened that's landed me in
-A&E.  So anyone signing into our service will probably have to go
-through a password recovery process, and you can very quickly see how
-with the right confluence of queue length and time at desk, we end up
-in a situation where the triage staff are waiting for the person in
-front of them to finish signing in.  We'd have created a delay where
-previously there wasn't one.
+fronted by NHS Login, so people could use exactly the same
+credentials as they use for the NHS App, and it as only purpose
+would be to put a scannable code on the phone's screen.  This
+would be technically simple to build and operate, but it turns
+out that there's no way to implement this without causing a new
+delay as the user signs in to this new service.  Using the same
+credentials doesn't grant access to biometric login.
 
 So this approach is largely ruled out.  We can't risk making things
 worse otherwise no hospital is going to be interested in helping us to
