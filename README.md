@@ -1,5 +1,24 @@
 # The Magic Scanner
 
+In this project, we built a portable scanner to test the idea of
+scanning patients in to a hospital Patient Administration
+System (PAS) with their phone without having to make changes to
+the NHS App. The scanner takes an picture of the app home screen,
+processes the image using optical character recognition (OCR),
+and outputs the text in a format that can be easily consumed by
+the PAS. We used a Raspberry Pi and a Pi camera module to build
+the scanner, and trained the OCR model using the PyTesseract
+library.
+
+We were able to demonstrate that it is possible to build a
+scanner like this with a small team on a tight timeline. The
+project also highlighted the range of capabilities, equipment,
+skills, and tooling required to build such a device, which could
+be useful for future projects. However, further testing is needed
+to assess the reliability of the scanner in practical use, and
+the OCR model may need to be retrained with better training data
+specifically to address potential ethnic bias issues.
+
 ## Setting The Scene
 
 When you walk into A&E, the very first interaction you will have is
